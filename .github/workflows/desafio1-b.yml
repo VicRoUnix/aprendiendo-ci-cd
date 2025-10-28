@@ -1,0 +1,28 @@
+name: desafio1-b-variables
+
+on: [push]
+
+env:
+  NUM_A: "3"
+  NUM_B: "2"
+
+jobs:
+  calculadora_2_0:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Sumar
+      run: |
+        $RESULTADO=$((NUM_A + NUM_B))
+        echo "El resultado de $NUM_A + $NUM_B es: $RESULTADO"
+    - name: Restar
+      run: |
+        $RESULTADO=$((NUM_A - NUM_B))
+        echo "El resultado de $NUM_A - $NUM_B es: $RESULTADO"
+    - name: Multiplicar
+      run: |
+        $RESULTADO=$((NUM_A * NUM_B))
+        echo "El resultado de $NUM_A * $NUM_B es: $RESULTADO"
+    - name: Dividir
+      run: |
+        $RESULTADO=$((NUM_A / NUM_B))
+        echo "El resultado de $NUM_A / $NUM_B es: $RESULTADO"

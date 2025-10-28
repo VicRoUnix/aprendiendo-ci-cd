@@ -1,0 +1,39 @@
+name: desafio1-b-variables
+
+on:
+  push:
+    branches: [main, develop]
+  workflow_dispatch:
+
+env:
+  NUM_A: "3"
+  NUM_B: "2"
+
+jobs:
+  detectar:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Detectar rama
+      run: |
+        echo "Rama actual: ${{ github.ref_name }}"
+
+  Sumar_main:
+    if: ${{ github.ref_naame == 'main' }}
+    needs: detectar
+    runs-on: ubuntu-latest
+    steps:
+    - name: Sumar
+      run: |
+        $RESULTADO=$((NUM_A + NUM_B))
+        echo "El resultado de $NUM_A + $NUM_B es: $RESULTADO"
+
+  Restar_develop:
+    if: ${{ github.ref_name == 'develop' }}
+    needs: detectar
+    runs-on: ubuntu-latest
+    steps:
+    - name: Restar
+      run: |
+        $RESULTADO=$((NUM_A - NUM_B))
+        echo "El resultado de $NUM_A - $NUM_B es: $RESULTADO"
+

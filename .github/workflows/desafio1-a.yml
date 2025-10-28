@@ -1,0 +1,24 @@
+name: first-basic-workflow
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  calculadora:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Sumar
+      run: |
+        echo "2 + 2 = 4" 
+    - name: Restar
+      run: |
+        echo "2 - 2 = 0"
+    - name: Multiplicar
+      run: |
+        echo "2 * 2 = 4"
+    - name: Dividir
+      run: |
+        echo "2 / 2 = 1"
+
