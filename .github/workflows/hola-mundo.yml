@@ -1,0 +1,30 @@
+name: First CI/CD
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  saludar:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deescargar codigo
+      uses: actions/checkout@v4
+
+    - name: HOla mundo DevOPs!
+      run: |
+        echo "Hola DevOps funciona!"
+        date
+        uname -a
+
+    - name: Test Matematico
+      run: |
+        if [ $((2+2)) -eq 4 ]; then
+          echo " NIce it works"
+        else
+          echo " NOt Nice"
+          exit 1
+        fi
