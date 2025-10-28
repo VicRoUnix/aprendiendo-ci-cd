@@ -12,17 +12,17 @@ jobs:
     steps:
     - name: Sumar
       run: |
-        $RESULTADO=$((NUM_A + NUM_B))
+        RESULTADO=$((NUM_A + NUM_B))
         echo "El resultado de $NUM_A + $NUM_B es: $RESULTADO"
     - name: Restar
       run: |
-        $RESULTADO=$((NUM_A - NUM_B))
+        RESULTADO=$((NUM_A - NUM_B))
         echo "El resultado de $NUM_A - $NUM_B es: $RESULTADO"
     - name: Multiplicar
       run: |
-        $RESULTADO=$((NUM_A * NUM_B))
+        RESULTADO=$((NUM_A * NUM_B))
         echo "El resultado de $NUM_A * $NUM_B es: $RESULTADO"
     - name: Dividir
       run: |
-        $RESULTADO=$((NUM_A / NUM_B))
+        RESULTADO=$((NUM_A / NUM_B))
         echo "El resultado de $NUM_A / $NUM_B es: $RESULTADO"

@@ -187,19 +187,19 @@ jobs:
     steps:
     - name: Sumar
       run: |
-        $RESULTADO=$((NUM_A + NUM_B))
+        RESULTADO=$((NUM_A + NUM_B))
         echo "El resultado de $NUM_A + $NUM_B es: $RESULTADO"
     - name: Restar
       run: |
-        $RESULTADO=$((NUM_A - NUM_B))
+        RESULTADO=$((NUM_A - NUM_B))
         echo "El resultado de $NUM_A - $NUM_B es: $RESULTADO"
     - name: Multiplicar
       run: |
-        $RESULTADO=$((NUM_A * NUM_B))
+        RESULTADO=$((NUM_A * NUM_B))
         echo "El resultado de $NUM_A * $NUM_B es: $RESULTADO"
     - name: Dividir
       run: |
-        $RESULTADO=$((NUM_A / NUM_B))
+        RESULTADO=$((NUM_A / NUM_B))
         echo "El resultado de $NUM_A / $NUM_B es: $RESULTADO"
 ```
 
@@ -225,13 +225,13 @@ jobs:
         echo "Rama actual: ${{ github.ref_name }}"
 
   Sumar_main:
-    if: ${{ github.ref_naame == 'main' }}
+    if: ${{ github.ref_name == 'main' }}
     needs: detectar
     runs-on: ubuntu-latest
     steps:
     - name: Sumar
       run: |
-        $RESULTADO=$((NUM_A + NUM_B))
+        RESULTADO=$((NUM_A + NUM_B))
         echo "El resultado de $NUM_A + $NUM_B es: $RESULTADO"
 
   Restar_develop:
@@ -241,7 +241,7 @@ jobs:
     steps:
     - name: Restar
       run: |
-        $RESULTADO=$((NUM_A - NUM_B))
+        RESULTADO=$((NUM_A - NUM_B))
         echo "El resultado de $NUM_A - $NUM_B es: $RESULTADO"
 ```
 
