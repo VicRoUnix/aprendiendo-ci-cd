@@ -29,7 +29,7 @@ jobs:
 
     - name: Ejecutar con cobertura
       run: |
-        pytest --cov=app --cov-report=term --cov-report=html
+        pytest --cov=desafio2 --cov-report=term --cov-report=html
 
     - name: Guardar reporte
       uses: actions/upload-artifact@v3

@@ -142,3 +142,73 @@ jobs:
         name: coverage-report
         path: htmlcov/
 ```
+* Este paso cojee la accion preconfigurada del markeetplace de github actions para instalar python dentro de la maquina ubuntu donde se le dira que queremos la version 3.11  
+  * Name: Configurar Python
+  * Uses: Actions/set-up python@v4
+  * with: python-version:3.11
+* Instalaremos las dependencias flask y pytest en la maquina ubuntu, para realizar las pruebas automaticas con el archivo requirements.txt
+  * pip install -r requirements.txt
+* Ejecuta el comando pytest para realizar las pruebas pertineentes de nuestra aplicacion python flask, en el directorio dentro de tests y -v de verbose para que aparezca el prodecimiento 
+  * pytest tests/ -v
+* En este paso le esta diciendo a pytest una serie de pasos
+  * Quiero que cuando ejecutes los test de mientras me midas cuantas lineas de codigo del modulo/paquete app estan siendo probadas
+    * pytest --cov=app
+  * Muestrame un resumen de la cobertura en la terminal(log de github actions)
+    * --cov-report=term
+  * Generame un reporte mas detallado en fomrato html creando una nueva carpeta llamada htmlcov/
+    * --cov-report=html
+* En el ultimo paso usa la accion upload-artifact para guardar los archivos generados en el workflow
+  * name: coverage-report: Nombre del archivo descargable
+  * path: htmlcov/ Es la carpeta donde tiene que subir el reporte
+  
+
+
+---
+
+## 5.Multiples versiones de Python
+```bash
+nano .github/worksflows/ci-matrix-py.yml
+```
+```yml
+name: CI Python Matrix
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test-matrix:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.9', '3.10', '3.11']
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - run: pip install -r requirements.txt
+    - run: pytest tests/ -v
+
+    - name: Verificar app corriendo
+      run: |
+        timeout 10 python app.py &
+        sleep 5
+        curl -f http://localhost:5000/health
+```
+* Cuando dice strategy, matrix, le estamos dando 3 versiones de python , de las cualees va ejecutar las pruebas en todas estas 3 versiones.
+
+---
+
+# Desafio del Dia
+
+* 1.Crea tu app en Flask
+* 2.Escribir al menos 5 tests.
+* 3.Crear el workflow `ci-python-desf.yml`
+* 4.Ejecutarlo en GitHub.
+* 5.Probar el matrix CI
