@@ -27,6 +27,7 @@ jobs:
         python-version: ${{ matrix.python-version }}
 
     - run: pip install -r requirements.txt
+    - run: export PYTHONPATH=$PYTHONPATH:.
     - run: pytest tests/ -v
         
     - name: Verificar app corriendo

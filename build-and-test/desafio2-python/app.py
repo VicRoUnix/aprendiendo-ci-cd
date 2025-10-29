@@ -8,7 +8,7 @@ def local():
     return jsonify({
         'message': 'Me podria usted decir que hora es?',
         'datestamp': datetime.datetime.now().isoformat(),
-        'satus': 'success'
+        'status': 'success'
     })
 
 @app.route('/status')
