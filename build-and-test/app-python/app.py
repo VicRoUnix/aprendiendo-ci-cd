@@ -27,7 +27,7 @@ def suma(a, b):
 @app.route('/saludo/<nombre>')
 def saludo(nombre):
     return jsonify({
-        'saludo': f'¡Hola {nombre}!',
+        'saludo': f'Hola {nombre}',
         'mensaje': 'Bienvenido a mi aplicación'
     })
 

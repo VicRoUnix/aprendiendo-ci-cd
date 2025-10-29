@@ -1,4 +1,4 @@
-name: CI python app
+name: CI python Desafio app
 
 on:
   push: 
@@ -29,10 +29,12 @@ jobs:
 
     - name: Ejecutar tests
       run: |
+        export PYTHONPATH=$PYTHONPATH:.
         pytest tests/ -v
 
     - name: Ejecutar con cobertura
       run: |
+        export PYTHONPATH=$PYTHONPATH:.
         pytest --cov=desafio2 --cov-report=term --cov-report=html
 
     - name: Guardar reporte

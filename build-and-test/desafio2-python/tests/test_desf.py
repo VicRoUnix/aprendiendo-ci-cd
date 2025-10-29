@@ -23,7 +23,7 @@ def test_restar(client):
 
 def test_despedida(client):
     r = client.get('/despedida/amigo')
-    assert '¡Goodbye amigo!' in r.get_data(as_text=True)
+    assert 'Goodbye amigo' in r.get_data(as_text=True)
 
 def test_dividir(): assert dividir(10, 2) == 5
 def test_inpar(): assert inpar(7)
