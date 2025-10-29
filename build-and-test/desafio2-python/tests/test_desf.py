@@ -1,10 +1,10 @@
 import pytest, json
-from desafio2 import desafio2, dividir, inpar
+from app import app, dividir, inpar
 
 @pytest.fixture
 def client():
-    desafio2.config['TESTING'] = True
-    with desafio2.test_client() as client:
+    app.config['TESTING'] = True
+    with app.test_client() as client:
         yield client
 
 def test_local(client):
