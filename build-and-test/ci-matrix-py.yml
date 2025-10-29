@@ -9,6 +9,12 @@ on:
 jobs:
   test-matrix:
     runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: build-and-test/app-python
+      
+
     strategy:
       matrix:
         python-version: ['3.9', '3.10', '3.11']

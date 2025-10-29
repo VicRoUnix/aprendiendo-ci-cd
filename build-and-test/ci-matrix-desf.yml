@@ -9,6 +9,11 @@ on:
 jobs:
   test-matrix:
     runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: build-and-test/desafio2-python
+
     strategy:
       matrix:
         python-version: ['3.9', '3.10', '3.11']
@@ -25,6 +30,6 @@ jobs:
         
     - name: Verificar desafio corriendo
       run: |
-        timeout 10 python desafio2.py &
+        timeout 10 python app.py &
         sleep 5
         curl -f http://localhost:5000/status
