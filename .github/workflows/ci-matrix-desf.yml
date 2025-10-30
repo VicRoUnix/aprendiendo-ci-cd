@@ -33,6 +33,6 @@ jobs:
         
     - name: Verificar desafio corriendo
       run: |
-        timeout 10 python desafio2.py &
+        timeout 10 python app.py &
         sleep 5
         curl -f http://localhost:5000/status
