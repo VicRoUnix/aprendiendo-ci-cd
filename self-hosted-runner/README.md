@@ -17,10 +17,10 @@ newgrp docker
 ![IMAGEN DE LA UBICACION DEL RUNNER](./images/runner.png)
 
 ## 3.Configuremos el runner
-* Tendremos que seguir la guia que nos da la iamgen con sus comandos.
+* Tendremos que seguir la guia que nos da la imagen con sus comandos.
 ```bash
 # En la raiz del repositorio
-mkdir actions-runner && actions-runner
+mkdir actions-runner && cd actions-runner
 
 # Descargar el ultimo paquete
 curl -o actions-runner-linux-x64-2.329.0.tar.gz -L https://github.com/actions/runner/releases/download/v2.329.0/actions-runner-linux-x64-2.329.0.tar.gz
@@ -37,3 +37,35 @@ tar xzf ./actions-runner-linux-x64-2.329.0.tar.gz
 # Vamos a prenderlo!!
 ./run.sh
 ```
+![Visualicacion de nuestro runner conectado a github](images/runner2.png)
+
+---
+
+## Crear un Workflow basico que lo utilize
+```bash
+nano .github/workflows/self-hosted-test.yml
+```
+
+```yml
+name: Test en Self-hosted
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  test-local:
+    runs-on: [self-hosted]
+    
+    steps:
+    - name: Clonar código
+      uses: actions/checkout@v4
+
+    - name: Info del sistema
+      run: |
+        echo "🏠 Hostname: $(hostname)"
+        echo "🔧 Usuario: $(whoami)"
+        echo "🕓 Fecha: $(date)"
+```
+![Comprobacion de exito de test-runner.yml](images/runner3.png)
