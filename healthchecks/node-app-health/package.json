@@ -1,0 +1,14 @@
+{
+  "name": "health-check-practice",
+  "version": "1.0.0",
+  "description": "Una app simple de Node.js para practicar health checks.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "author": "",
+  "license": "ISC"
+}
